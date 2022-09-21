@@ -23,8 +23,8 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme= 'base16'
 
-
 lua << EOF
+--- TODO: make applicate for other languages than Rust
 function compile_and_run()
     vim.cmd(":wa")
     vim.cmd(":FloatermNew --autoclose=0 --autoclose=2 cargo run")

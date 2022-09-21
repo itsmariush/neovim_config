@@ -23,7 +23,7 @@
           "directory": "/tmp/ccls"
         },
         "clang": {
-          "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
+          "resourceDir": "/usr/lib/clang/14.0.6",
           "extraArgs": [
             "-isystem",
             "/opt/devkitpro/libctru/include"
