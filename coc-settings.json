@@ -1,0 +1,38 @@
+{
+"diagnostic.enable": true,
+"diagnostic.virtualText": false,
+"diagnostic.joinMessageLines": true,
+"diagnostic.checkCurrentLine": true,
+"diagnostic.messageTarget": "float",
+"diagnostic.level": "information",
+"suggest.autoTrigger": "none",
+"signature.enable": false,
+"coc.preferences.snippets.enable": false,
+"rust-analyzer.diagnostics.enable": true,
+"rust-analyzer.inlayHints.chainingHints": true,
+"rust-analyzer.inlayHints.typeHints": true,
+"rust-analyzer.inlayHints.parameterHints": true,
+
+"languageserver": {
+  "ccls": {
+    "command": "ccls",
+    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+    "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "clang": {
+          "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
+          "extraArgs": [
+            "-isystem",
+            "/opt/devkitpro/libctru/include"
+          ]
+        }
+
+      }
+  }
+}
+}
+
+
