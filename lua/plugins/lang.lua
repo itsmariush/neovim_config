@@ -5,7 +5,7 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
-      inlay_hints = { enabled = vim.fn.has('nvim-0.10') },
+      inlay_hints = { enabled = vim.fn.has("nvim-0.10") },
       ---@type lspconfig.options
       servers = {
         -- sourcekit will be automatically installed with mason and loaded with lspconfig
@@ -21,20 +21,64 @@ return {
     opts = {
       ensure_installed = {
         "lua-language-server",
-        "marksman"
+        "marksman",
       },
       ui = {
         icons = {
           package_installed = "✓",
           package_pending = "",
-          package_uninstalled = "✗"
-        }
-      }
+          package_uninstalled = "✗",
+        },
+      },
     },
   },
+  {
+    "simrat39/rust-tools.nvim",
+    opts = {
+      tools = {
+        inlay_hints = {
+          -- automatically set inlay hints (type hints)
+          -- default: true
+          auto = true,
 
-  -- disable the fancy UI for the debugger
-  { "rcarriga/nvim-dap-ui", enabled = false },
+          -- Only show inlay hints for the current line
+          only_current_line = false,
+
+          -- whether to show parameter hints with the inlay hints or not
+          -- default: true
+          show_parameter_hints = true,
+
+          -- prefix for parameter hints
+          -- default: "<-"
+          parameter_hints_prefix = "<- ",
+
+          -- prefix for all the other hints (type, chaining)
+          -- default: "=>"
+          other_hints_prefix = "=> ",
+
+          -- whether to align to the length of the longest line in the file
+          max_len_align = false,
+
+          -- padding from the left if max_len_align is true
+          max_len_align_padding = 1,
+
+          -- whether to align to the extreme right or not
+          right_align = false,
+
+          -- padding from the right if right_align is true
+          right_align_padding = 7,
+
+          -- The color of the hints
+          highlight = "Comment",
+        },
+      },
+      server = {
+        -- standalone file support
+        -- setting it to false may improve startup time
+        standalone = true,
+      }, -- rust-analyzer options
+    },
+  },
 
   -- which key integration
   {
@@ -42,31 +86,8 @@ return {
     opts = {
       defaults = {
         ["<leader>dw"] = { name = "+widgets" },
-      }
-    }
-  },
-
-  -- dap integration
-  {
-    "mfussenegger/nvim-dap",
-    keys = {
-      { "<leader>de",
-        function() require("dap.ui.widgets").centered_float(require("dap.ui.widgets").expression, { border = "none" }) end,
-        desc = "Eval",
-        mode = { "n", "v" } },
-      { "<leader>dwf",
-        function() require("dap.ui.widgets").centered_float(require("dap.ui.widgets").frames, { border = "none" }) end,
-        desc = "Frames" },
-      { "<leader>dws",
-        function() require("dap.ui.widgets").centered_float(require("dap.ui.widgets").scopes, { border = "none" }) end,
-        desc = "Scopes" },
-      { "<leader>dwt",
-        function() require("dap.ui.widgets").centered_float(require("dap.ui.widgets").threads, { border = "none" }) end,
-        desc = "Threads" },
+      },
     },
-    opts = function(_, opts)
-      require("dap").defaults.fallback.terminal_win_cmd = "enew | set filetype=dap-terminal"
-    end
   },
 
   -- core language specific extension modules
@@ -79,5 +100,4 @@ return {
   -- custom language specific extension modules
   -- { import = "plugins.extras.lang.java" },
   -- { import = "plugins.extras.lang.nodejs" },
-
 }
