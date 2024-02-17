@@ -11,6 +11,7 @@ return {
         -- sourcekit will be automatically installed with mason and loaded with lspconfig
         sourcekit = {},
         psalm = {},
+        lua_ls = { enabled = false }, -- disable lua_ls to edit nvim config without crashing
       },
     },
   },
