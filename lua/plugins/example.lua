@@ -27,6 +27,21 @@ return {
     opts = { use_diagnostic_signs = true },
   },
 
+  -- TODO: find out how to make it work
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      event_handlers = {
+        event = "neo_tree_buffer_enter",
+        handler = function()
+          vim.cmd([[
+              setlocal relativenumber
+            ]])
+        end,
+      },
+    },
+  },
+
   -- disable trouble
   { "folke/trouble.nvim", enabled = false },
 
@@ -96,7 +111,11 @@ return {
       },
     },
   },
-
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^4", -- Recommended
+    ft = { "rust" },
+  },
   -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -155,6 +174,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "php",
       },
     },
   },
@@ -169,6 +189,7 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "tsx",
         "typescript",
+        "php",
       })
     end,
   },

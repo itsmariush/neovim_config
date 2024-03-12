@@ -7,3 +7,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.b.autoformat = false
   end,
 })
+
+-- Stalker mod scripts
+vim.cmd("au BufRead,BufNewFile *.script set filetype=lua")
+vim.cmd("au BufRead,BufNewFile *.ltx syntax off")
