@@ -27,21 +27,6 @@ return {
     opts = { use_diagnostic_signs = true },
   },
 
-  -- TODO: find out how to make it work
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      event_handlers = {
-        event = "neo_tree_buffer_enter",
-        handler = function()
-          vim.cmd([[
-              setlocal relativenumber
-            ]])
-        end,
-      },
-    },
-  },
-
   -- disable trouble
   { "folke/trouble.nvim", enabled = false },
 
@@ -102,6 +87,9 @@ return {
   -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
+    config = function()
+      require("lspconfig").arduino_language_server.setup({})
+    end,
     ---@class PluginLspOpts
     opts = {
       ---@type lspconfig.options
@@ -231,6 +219,21 @@ return {
         "flake8",
       },
     },
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "arduino_language_server",
+          -- We need to install clangd for arduino_language_server to work
+          "clangd",
+        },
+      })
+    end,
   },
 
   -- Use <tab> for completion and snippets (supertab)

@@ -1,7 +1,7 @@
 local plugin = {
   {
     "github/copilot.vim",
-    event = "VimEnter",
+    enabled = false,
   },
 }
 return plugin
