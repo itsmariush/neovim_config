@@ -1,5 +1,15 @@
 return {
-
+  {
+    "glebzlat/arduino-nvim",
+    config = {
+      function()
+        require("arduino-nvim").setup()
+      end,
+      filetype = "arduino",
+    },
+    dev = true,
+    -- dir = "~/Documents/neovim/Arduino.nvim",
+  },
   -- uncomment and add lsp servers with their config to servers below
   {
     "neovim/nvim-lspconfig",
@@ -10,7 +20,6 @@ return {
       servers = {
         -- sourcekit will be automatically installed with mason and loaded with lspconfig
         sourcekit = {},
-        psalm = {},
         lua_ls = { enabled = false }, -- disable lua_ls to edit nvim config without crashing
       },
     },
